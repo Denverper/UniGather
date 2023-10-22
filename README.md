@@ -1,3 +1,5 @@
+[![Codemagic build status](https://api.codemagic.io/apps/65359475cb532703c0cb6498/65359475cb532703c0cb6497/status_badge.svg)](https://codemagic.io/apps/65359475cb532703c0cb6498/65359475cb532703c0cb6497/latest_build)
+
 # DU Hackathon 2023
 
 UniGather's mission is to empower students in their endeavors to create clubs that allow them to form meaningful connections with other peers.
