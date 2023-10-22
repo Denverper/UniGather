@@ -371,7 +371,9 @@ class _ClubsWidgetState extends State<ClubsWidget>
                                             0.0, 0.0, 0.0, 10.0),
                                         child: Container(
                                           width: 100.0,
-                                          height: 100.0,
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.15,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
