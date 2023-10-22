@@ -11,6 +11,6 @@ In future developments, we plan to include data verification, email verification
 For this competition, we decided to use Flutter, a mobile app framework, for multi-platform availability and ease of integration with Firebase.
 
 Sources used for this project:
-Flutterflow, Firebase
+Flutterflow, Firebase, codemagic
 
 Developers: Matthew White, Denver Persinger, Eduardo Fuentes, Cameron Spear, and Tho Le.
