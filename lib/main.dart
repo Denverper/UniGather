@@ -157,26 +157,26 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.people,
-              size: 24.0,
+              Icons.groups_3_rounded,
+              size: 30.0,
             ),
             label: 'Clubs',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
-              size: 24.0,
+              Icons.home,
+              size: 30.0,
             ),
             label: 'Home',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.lightbulb_circle_rounded,
-              size: 24.0,
+              Icons.lightbulb_sharp,
+              size: 30.0,
             ),
-            label: 'Home',
+            label: 'Idea',
             tooltip: '',
           )
         ],

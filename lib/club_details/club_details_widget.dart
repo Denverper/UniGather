@@ -158,6 +158,15 @@ class _ClubDetailsWidgetState extends State<ClubDetailsWidget> {
                     ),
               ),
               actions: [],
+              flexibleSpace: FlexibleSpaceBar(
+                background: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(
+                    'https://images.unsplash.com/photo-1578886141033-b9f066572135?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwzfHxjbGltYmluZ3xlbnwwfHx8fDE2OTc5ODQ3OTJ8MA&ixlib=rb-4.0.3&q=80&w=1080',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
               centerTitle: false,
               elevation: 2.0,
             ),

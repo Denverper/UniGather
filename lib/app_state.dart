@@ -28,6 +28,12 @@ class FFAppState extends ChangeNotifier {
   set clubReference(DocumentReference? _value) {
     _clubReference = _value;
   }
+
+  DocumentReference? _postReference;
+  DocumentReference? get postReference => _postReference;
+  set postReference(DocumentReference? _value) {
+    _postReference = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
