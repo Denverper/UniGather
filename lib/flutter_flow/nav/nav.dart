@@ -99,11 +99,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => Auth1Widget(),
         ),
         FFRoute(
-          name: 'userProfile',
-          path: '/userProfile',
-          builder: (context, params) => UserProfileWidget(),
-        ),
-        FFRoute(
           name: 'Clubs',
           path: '/clubs',
           builder: (context, params) =>
@@ -127,9 +122,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ClubCreated',
-          path: '/clubCreated',
-          builder: (context, params) => ClubCreatedWidget(),
+          name: 'ClubPostCopy',
+          path: '/clubPostCopy',
+          builder: (context, params) => ClubPostCopyWidget(),
+        ),
+        FFRoute(
+          name: 'profile',
+          path: '/profile',
+          builder: (context, params) => ProfileWidget(),
+        ),
+        FFRoute(
+          name: 'profileEdit',
+          path: '/profileEdit',
+          builder: (context, params) => ProfileEditWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

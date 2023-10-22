@@ -46,15 +46,20 @@ class PostsRecord extends FirestoreRecord {
   List<DocumentReference> get likes => _likes ?? const [];
   bool hasLikes() => _likes != null;
 
-  // "num_votes" field.
-  int? _numVotes;
-  int get numVotes => _numVotes ?? 0;
-  bool hasNumVotes() => _numVotes != null;
-
   // "club_name" field.
   DocumentReference? _clubName;
   DocumentReference? get clubName => _clubName;
   bool hasClubName() => _clubName != null;
+
+  // "num_votes" field.
+  List<DocumentReference>? _numVotes;
+  List<DocumentReference> get numVotes => _numVotes ?? const [];
+  bool hasNumVotes() => _numVotes != null;
+
+  // "comments" field.
+  List<DocumentReference>? _comments;
+  List<DocumentReference> get comments => _comments ?? const [];
+  bool hasComments() => _comments != null;
 
   void _initializeFields() {
     _postPhoto = snapshotData['post_photo'] as String?;
@@ -63,8 +68,9 @@ class PostsRecord extends FirestoreRecord {
     _postUser = snapshotData['post_user'] as DocumentReference?;
     _timePosted = snapshotData['time_posted'] as DateTime?;
     _likes = getDataList(snapshotData['likes']);
-    _numVotes = castToType<int>(snapshotData['num_votes']);
     _clubName = snapshotData['club_name'] as DocumentReference?;
+    _numVotes = getDataList(snapshotData['num_votes']);
+    _comments = getDataList(snapshotData['comments']);
   }
 
   static CollectionReference get collection =>
@@ -106,7 +112,6 @@ Map<String, dynamic> createPostsRecordData({
   String? postDescription,
   DocumentReference? postUser,
   DateTime? timePosted,
-  int? numVotes,
   DocumentReference? clubName,
 }) {
   final firestoreData = mapToFirestore(
@@ -116,7 +121,6 @@ Map<String, dynamic> createPostsRecordData({
       'post_description': postDescription,
       'post_user': postUser,
       'time_posted': timePosted,
-      'num_votes': numVotes,
       'club_name': clubName,
     }.withoutNulls,
   );
@@ -136,8 +140,9 @@ class PostsRecordDocumentEquality implements Equality<PostsRecord> {
         e1?.postUser == e2?.postUser &&
         e1?.timePosted == e2?.timePosted &&
         listEquality.equals(e1?.likes, e2?.likes) &&
-        e1?.numVotes == e2?.numVotes &&
-        e1?.clubName == e2?.clubName;
+        e1?.clubName == e2?.clubName &&
+        listEquality.equals(e1?.numVotes, e2?.numVotes) &&
+        listEquality.equals(e1?.comments, e2?.comments);
   }
 
   @override
@@ -148,8 +153,9 @@ class PostsRecordDocumentEquality implements Equality<PostsRecord> {
         e?.postUser,
         e?.timePosted,
         e?.likes,
+        e?.clubName,
         e?.numVotes,
-        e?.clubName
+        e?.comments
       ]);
 
   @override

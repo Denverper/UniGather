@@ -146,7 +146,7 @@ class _Auth1WidgetState extends State<Auth1Widget>
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondary,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         body: SafeArea(
           top: true,
           child: Stack(
@@ -163,15 +163,14 @@ class _Auth1WidgetState extends State<Auth1Widget>
                   alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 72.0),
-                    child: Text(
-                      'CampusConnect',
-                      style: FlutterFlowTheme.of(context).displaySmall.override(
-                            fontFamily: 'Plus Jakarta Sans',
-                            color: Color(0xFF101213),
-                            fontSize: 36.0,
-                            fontWeight: FontWeight.w600,
-                          ),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 70.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: Image.asset(
+                        'assets/images/UniGatherLOGO.png',
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -778,7 +777,7 @@ class _Auth1WidgetState extends State<Auth1Widget>
                                                           }
 
                                                           context.pushNamedAuth(
-                                                              'userProfile',
+                                                              'profileEdit',
                                                               context.mounted);
                                                         },
                                                         text: 'Get Started',

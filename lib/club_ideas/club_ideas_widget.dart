@@ -201,113 +201,128 @@ class _ClubIdeasWidgetState extends State<ClubIdeasWidget>
                               .asValidator(context),
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            if (_model.formKey.currentState == null ||
-                                !_model.formKey.currentState!.validate()) {
-                              return;
-                            }
-
-                            var clubsRecordReference =
-                                ClubsRecord.collection.doc();
-                            await clubsRecordReference
-                                .set(createClubsRecordData(
-                              name: _model.clubNameController.text,
-                              creator: currentUserReference,
-                              dateCreated: getCurrentTimestamp,
-                              isAvail: false,
-                              isCreated: false,
-                              pictureUrl: '',
-                              description:
-                                  _model.clubDescriptionController.text,
-                            ));
-                            _model.newClub = ClubsRecord.getDocumentFromData(
-                                createClubsRecordData(
-                                  name: _model.clubNameController.text,
-                                  creator: currentUserReference,
-                                  dateCreated: getCurrentTimestamp,
-                                  isAvail: false,
-                                  isCreated: false,
-                                  pictureUrl: '',
-                                  description:
-                                      _model.clubDescriptionController.text,
-                                ),
-                                clubsRecordReference);
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('Added'),
-                                  content:
-                                      Text('Your club idea has been added!'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                );
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 10.0, 0.0, 0.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                Navigator.pop(context);
                               },
-                            );
+                              text: 'Cancel',
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).secondary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Manrope',
+                                      color: Colors.white,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Align(
+                              alignment: AlignmentDirectional(1.00, 0.00),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 20.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    if (_model.formKey.currentState == null ||
+                                        !_model.formKey.currentState!
+                                            .validate()) {
+                                      return;
+                                    }
 
-                            setState(() {});
-                          },
-                          text: 'Share Idea',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Manrope',
-                                  color: Colors.white,
+                                    var clubsRecordReference =
+                                        ClubsRecord.collection.doc();
+                                    await clubsRecordReference
+                                        .set(createClubsRecordData(
+                                      name: _model.clubNameController.text,
+                                      creator: currentUserReference,
+                                      dateCreated: getCurrentTimestamp,
+                                      isAvail: false,
+                                      isCreated: false,
+                                      pictureUrl: '',
+                                      description:
+                                          _model.clubDescriptionController.text,
+                                    ));
+                                    _model.newClub =
+                                        ClubsRecord.getDocumentFromData(
+                                            createClubsRecordData(
+                                              name: _model
+                                                  .clubNameController.text,
+                                              creator: currentUserReference,
+                                              dateCreated: getCurrentTimestamp,
+                                              isAvail: false,
+                                              isCreated: false,
+                                              pictureUrl: '',
+                                              description: _model
+                                                  .clubDescriptionController
+                                                  .text,
+                                            ),
+                                            clubsRecordReference);
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('Added'),
+                                          content: Text(
+                                              'Your club idea has been added!'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    Navigator.pop(context);
+
+                                    setState(() {});
+                                  },
+                                  text: 'Share',
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          color: Colors.white,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            Navigator.pop(context);
-                          },
-                          text: 'Cancel',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).secondary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Manrope',
-                                  color: Colors.white,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
@@ -330,29 +345,43 @@ class _ClubIdeasWidgetState extends State<ClubIdeasWidget>
           actions: [
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  context.pushNamed('userProfile');
-                },
-                child: Container(
-                  width: 120.0,
-                  height: 120.0,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.network(
-                    'https://picsum.photos/seed/81/600',
-                    fit: BoxFit.cover,
+              child: AuthUserStreamWidget(
+                builder: (context) => InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('profile');
+                  },
+                  child: Container(
+                    width: 120.0,
+                    height: 120.0,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Image.network(
+                      valueOrDefault<String>(
+                        currentUserPhoto,
+                        'https://i.stack.imgur.com/l60Hf.png',
+                      ),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
             ),
           ],
+          flexibleSpace: FlexibleSpaceBar(
+            background: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.network(
+                'https://images.unsplash.com/photo-1586165368502-1bad197a6461?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHw1fHxjaGVzc3xlbnwwfHx8fDE2OTc5ODQ1Mjh8MA&ixlib=rb-4.0.3&q=80&w=1080',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -371,7 +400,7 @@ class _ClubIdeasWidgetState extends State<ClubIdeasWidget>
                         child: TabBar(
                           labelColor: FlutterFlowTheme.of(context).primaryText,
                           unselectedLabelColor:
-                              FlutterFlowTheme.of(context).secondaryText,
+                              FlutterFlowTheme.of(context).error,
                           labelStyle: FlutterFlowTheme.of(context).titleMedium,
                           unselectedLabelStyle: TextStyle(),
                           indicatorColor: FlutterFlowTheme.of(context).primary,
@@ -382,10 +411,7 @@ class _ClubIdeasWidgetState extends State<ClubIdeasWidget>
                               text: 'All ideas',
                             ),
                             Tab(
-                              text: 'Hot Ideas',
-                              icon: Icon(
-                                Icons.local_fire_department_outlined,
-                              ),
+                              text: 'Popular ideas',
                             ),
                           ],
                           controller: _model.tabBarController,
@@ -446,16 +472,28 @@ class _ClubIdeasWidgetState extends State<ClubIdeasWidget>
                                                         0.0, 0.0, 0.0, 20.0),
                                                 child: Container(
                                                   width: 100.0,
-                                                  height: 167.0,
+                                                  height:
+                                                      MediaQuery.sizeOf(context)
+                                                              .height *
+                                                          0.15,
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
                                                   ),
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(7.0, 9.0,
+                                                            .fromSTEB(7.0, 8.0,
                                                                 7.0, 0.0),
                                                     child: InkWell(
                                                       splashColor:
@@ -484,21 +522,27 @@ class _ClubIdeasWidgetState extends State<ClubIdeasWidget>
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Text(
-                                                            listViewClubsRecord
-                                                                .name,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Manrope',
-                                                                  fontSize:
-                                                                      20.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w800,
-                                                                ),
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    -0.80,
+                                                                    0.00),
+                                                            child: Text(
+                                                              listViewClubsRecord
+                                                                  .name,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Manrope',
+                                                                    fontSize:
+                                                                        20.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w800,
+                                                                  ),
+                                                            ),
                                                           ),
                                                           Opacity(
                                                             opacity: 0.0,
