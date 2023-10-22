@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "300780345336",
+    "project_id": "clubconnect-63eaf",
+    "storage_bucket": "clubconnect-63eaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300780345336:android:753a1b3d303cf12f99e80d",
+        "android_client_info": {
+          "package_name": "com.mycompany.clubconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCungmwAUxJ8jf2puLFxooqLVpe0yoorLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
