@@ -127,6 +127,8 @@ class _ClubDetailsWidgetState extends State<ClubDetailsWidget> {
                       faculty: currentUserReference,
                       isCreated: true,
                     ));
+
+                    context.pushNamed('ClubIdeas');
                   },
                   backgroundColor: FlutterFlowTheme.of(context).primary,
                   elevation: 8.0,
@@ -217,6 +219,11 @@ class _ClubDetailsWidgetState extends State<ClubDetailsWidget> {
                               return;
                             }
                           }
+
+                          await clubDetailsClubsRecord.reference
+                              .update(createClubsRecordData(
+                            pictureUrl: _model.uploadedFileUrl,
+                          ));
                         },
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
@@ -390,9 +397,8 @@ class _ClubDetailsWidgetState extends State<ClubDetailsWidget> {
               backgroundColor: FlutterFlowTheme.of(context).primary,
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
+                borderColor: FlutterFlowTheme.of(context).primaryText,
+                borderRadius: 5.0,
                 buttonSize: 60.0,
                 icon: Icon(
                   Icons.arrow_back_rounded,
@@ -411,15 +417,14 @@ class _ClubDetailsWidgetState extends State<ClubDetailsWidget> {
                       'Members: ',
                       style: FlutterFlowTheme.of(context).titleLarge.override(
                             fontFamily: 'Outfit',
-                            color: FlutterFlowTheme.of(context).accent4,
+                            color: Colors.white,
                           ),
                     ),
                     Text(
                       clubDetailsClubsRecord.postLikedBy.length.toString(),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Manrope',
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            color: Colors.white,
                             fontSize: 20.0,
                           ),
                     ),
@@ -444,12 +449,12 @@ class _ClubDetailsWidgetState extends State<ClubDetailsWidget> {
                           .contains(currentUserReference),
                       onIcon: Icon(
                         Icons.favorite_sharp,
-                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        color: Colors.white,
                         size: 25.0,
                       ),
                       offIcon: Icon(
                         Icons.favorite_border,
-                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        color: Colors.white,
                         size: 25.0,
                       ),
                     ),
@@ -461,10 +466,19 @@ class _ClubDetailsWidgetState extends State<ClubDetailsWidget> {
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                    child: Icon(
-                      Icons.edit_square,
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      size: 27.0,
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        scaffoldKey.currentState!.openDrawer();
+                      },
+                      child: Icon(
+                        Icons.edit_square,
+                        color: Colors.white,
+                        size: 27.0,
+                      ),
                     ),
                   ),
                 ),
@@ -475,7 +489,7 @@ class _ClubDetailsWidgetState extends State<ClubDetailsWidget> {
                   child: Image.network(
                     valueOrDefault<String>(
                       clubDetailsClubsRecord.pictureUrl,
-                      'https://media.surreyschools.ca/media/Default/pgg/8275/Join%20a%20School%20Club-2.jpg',
+                      'https://images.unsplash.com/photo-1527097779402-4a4b213307fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxfHxsb2dpYyUyMGJvYXJkfGVufDB8fHx8MTY5ODAwNzE3OXww&ixlib=rb-4.0.3&q=80&w=1080',
                     ),
                     fit: BoxFit.cover,
                   ),

@@ -453,6 +453,11 @@ class _ClubPostCopyWidgetState extends State<ClubPostCopyWidget>
                               return;
                             }
                           }
+
+                          await clubPostCopyClubsRecord.reference
+                              .update(createClubsRecordData(
+                            pictureUrl: _model.uploadedFileUrl,
+                          ));
                         },
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),

@@ -369,8 +369,10 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                       displayName: _model.displayNameController.text,
                       photoUrl: _model.uploadedFileUrl,
                       name: _model.yourNameController.text,
-                      role: valueOrDefault(currentUserDocument?.role, ''),
+                      role: _model.roleValue,
                     ));
+
+                    context.pushNamed('Home');
                   },
                   text: 'Save Changes',
                   options: FFButtonOptions(

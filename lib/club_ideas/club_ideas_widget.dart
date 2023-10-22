@@ -181,6 +181,10 @@ class _ClubIdeasWidgetState extends State<ClubIdeasWidget>
                                 return;
                               }
                             }
+
+                            await widget.clubName!.update(createClubsRecordData(
+                              pictureUrl: _model.uploadedFileUrl,
+                            ));
                           },
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
@@ -650,9 +654,19 @@ class _ClubIdeasWidgetState extends State<ClubIdeasWidget>
                                                           Text(
                                                             listViewClubsRecord
                                                                 .description,
+                                                            maxLines: 2,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
+                                                          ),
+                                                          Opacity(
+                                                            opacity: 0.0,
+                                                            child: Divider(
+                                                              thickness: 0.0,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .accent4,
+                                                            ),
                                                           ),
                                                           Row(
                                                             mainAxisSize:
@@ -792,21 +806,27 @@ class _ClubIdeasWidgetState extends State<ClubIdeasWidget>
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Text(
-                                                            listViewClubsRecord
-                                                                .name,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Manrope',
-                                                                  fontSize:
-                                                                      20.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w800,
-                                                                ),
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    -0.80,
+                                                                    0.00),
+                                                            child: Text(
+                                                              listViewClubsRecord
+                                                                  .name,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Manrope',
+                                                                    fontSize:
+                                                                        20.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w800,
+                                                                  ),
+                                                            ),
                                                           ),
                                                           Opacity(
                                                             opacity: 0.0,
@@ -823,6 +843,15 @@ class _ClubIdeasWidgetState extends State<ClubIdeasWidget>
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium,
+                                                          ),
+                                                          Opacity(
+                                                            opacity: 0.0,
+                                                            child: Divider(
+                                                              thickness: 0.0,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .accent4,
+                                                            ),
                                                           ),
                                                           Row(
                                                             mainAxisSize:

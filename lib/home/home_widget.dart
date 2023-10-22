@@ -155,7 +155,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 0.0, 0.0, 0.0, 15.0),
                             child: Container(
                               width: 100.0,
-                              height: MediaQuery.sizeOf(context).height * 0.15,
+                              height: MediaQuery.sizeOf(context).height * 0.2,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -179,7 +179,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-0.80, 0.00),
+                                              AlignmentDirectional(-0.88, 0.00),
                                           child: StreamBuilder<UsersRecord>(
                                             stream: UsersRecord.getDocument(
                                                 listViewPostsRecord.postUser!),
@@ -225,7 +225,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-0.80, 0.00),
+                                              AlignmentDirectional(-0.88, 0.00),
                                           child: Text(
                                             dateTimeFormat(
                                                 'M/d h:mm a',
@@ -251,9 +251,17 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           fontSize: 16.0,
                                         ),
                                   ),
+                                  Opacity(
+                                    opacity: 0.0,
+                                    child: Divider(
+                                      thickness: 0.0,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent4,
+                                    ),
+                                  ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 5.0, 0.0, 0.0),
+                                        8.0, 5.0, 8.0, 0.0),
                                     child: Text(
                                       listViewPostsRecord.postDescription,
                                       maxLines: 1,
@@ -262,14 +270,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    alignment: AlignmentDirectional(1.00, 1.00),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 15.0, 8.0),
+                                          0.0, 20.0, 15.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
                                         children: [
                                           Text(
                                             'Club: ',
