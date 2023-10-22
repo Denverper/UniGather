@@ -99,6 +99,15 @@ class _HomeWidgetState extends State<HomeWidget> {
               ),
             ),
           ],
+          flexibleSpace: FlexibleSpaceBar(
+            background: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.network(
+                'https://images.unsplash.com/photo-1613425295165-dc4a15a98bbf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHw3fHxzY2hvb2wlMjBjbHVifGVufDB8fHx8MTY5Nzk4OTM3OHww&ixlib=rb-4.0.3&q=80&w=1080',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -114,7 +123,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   child: StreamBuilder<List<PostsRecord>>(
                     stream: queryPostsRecord(
                       queryBuilder: (postsRecord) =>
-                          postsRecord.orderBy('time_posted'),
+                          postsRecord.orderBy('time_posted', descending: true),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -146,14 +155,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 0.0, 0.0, 0.0, 15.0),
                             child: Container(
                               width: 100.0,
+                              height: MediaQuery.sizeOf(context).height * 0.15,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 4.0,
+                                    color: Color(0x33000000),
+                                    offset: Offset(0.0, 2.0),
+                                  )
+                                ],
                                 borderRadius: BorderRadius.circular(15.0),
-                                border: Border.all(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
