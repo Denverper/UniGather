@@ -1049,13 +1049,62 @@ class _ClubPostCopyWidgetState extends State<ClubPostCopyWidget>
                                                           mainAxisSize:
                                                               MainAxisSize.max,
                                                           children: [
-                                                            Icon(
-                                                              Icons
-                                                                  .favorite_border,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.80,
+                                                                      0.00),
+                                                              child: ToggleIcon(
+                                                                onPressed:
+                                                                    () async {
+                                                                  final likesElement =
+                                                                      currentUserReference;
+                                                                  final likesUpdate = listViewPostsRecord
+                                                                          .likes
+                                                                          .contains(
+                                                                              likesElement)
+                                                                      ? FieldValue
+                                                                          .arrayRemove([
+                                                                          likesElement
+                                                                        ])
+                                                                      : FieldValue
+                                                                          .arrayUnion([
+                                                                          likesElement
+                                                                        ]);
+                                                                  await listViewPostsRecord
+                                                                      .reference
+                                                                      .update({
+                                                                    ...mapToFirestore(
+                                                                      {
+                                                                        'likes':
+                                                                            likesUpdate,
+                                                                      },
+                                                                    ),
+                                                                  });
+                                                                  setState(
+                                                                      () {});
+                                                                },
+                                                                value: listViewPostsRecord
+                                                                    .likes
+                                                                    .contains(
+                                                                        currentUserReference),
+                                                                onIcon: Icon(
+                                                                  Icons
+                                                                      .favorite,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  size: 25.0,
+                                                                ),
+                                                                offIcon: Icon(
+                                                                  Icons
+                                                                      .favorite_border,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  size: 25.0,
+                                                                ),
+                                                              ),
                                                             ),
                                                             Padding(
                                                               padding:
@@ -1066,7 +1115,14 @@ class _ClubPostCopyWidgetState extends State<ClubPostCopyWidget>
                                                                           0.0,
                                                                           0.0),
                                                               child: Text(
-                                                                '3',
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  listViewPostsRecord
+                                                                      .likes
+                                                                      .length
+                                                                      .toString(),
+                                                                  '0',
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium,
